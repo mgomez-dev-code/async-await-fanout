@@ -3,7 +3,7 @@
 ![.NET](https://img.shields.io/badge/.NET-8-512BD4?logo=dotnet&logoColor=white)
 ![Language: C#](https://img.shields.io/badge/Language-C%23-239120?logo=csharp&logoColor=white)
 ![Tests: xUnit](https://img.shields.io/badge/Tests-xUnit-6aa84f)
-![.NET CI](https://github.com/mgomez-dev-code/AsyncAwaitFanOut/actions/workflows/dotnet.yml/badge.svg)
+[![.NET CI](https://github.com/mgomez-dev-code/async-await-fanout/actions/workflows/dotnet.yml/badge.svg)](https://github.com/mgomez-dev-code/async-await-fanout/actions/workflows/dotnet.yml)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green)
 
 A clean and modern **.NET 8** solution showcasing **async/await**, **bounded concurrency**, **timeouts**, and **partial success handling** using `Task.WhenAll` and `SemaphoreSlim`.  
