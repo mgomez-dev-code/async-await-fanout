@@ -1,0 +1,44 @@
+name: .NET 8 CI
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'AsyncAwaitFanOut.Core/**/*.cs'
+      - 'AsyncAwaitFanOut.Tests/**/*.cs'
+      - 'AsyncAwaitFanOut.ConsoleApp/**/*.cs'
+      - 'AsyncAwaitFanOut.Core/**/*.csproj'
+      - 'AsyncAwaitFanOut.Tests/**/*.csproj'
+      - 'AsyncAwaitFanOut.ConsoleApp/**/*.csproj'
+      - '.github/workflows/dotnet.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'AsyncAwaitFanOut.Core/**/*.cs'
+      - 'AsyncAwaitFanOut.Tests/**/*.cs'
+      - 'AsyncAwaitFanOut.ConsoleApp/**/*.cs'
+      - 'AsyncAwaitFanOut.Core/**/*.csproj'
+      - 'AsyncAwaitFanOut.Tests/**/*.csproj'
+      - 'AsyncAwaitFanOut.ConsoleApp/**/*.csproj'
+      - '.github/workflows/dotnet.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore AsyncAwaitFanOut.sln
+
+      - name: Build
+        run: dotnet build AsyncAwaitFanOut.sln --no-restore --configuration Release
+
+      - name: Test
+        run: dotnet test AsyncAwaitFanOut.sln --no-build --configuration Release --verbosity normal
